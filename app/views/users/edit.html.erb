@@ -1,0 +1,36 @@
+<h2>User info</h2>
+
+<%= form_with model:@user, local: true do |f| %>
+
+<% if @user.errors.any? %>
+<div class="alert alert-warning">
+    <ul>
+      <%= @user.errors.count %>error
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="image">
+    <h3>image</h3>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+  </div>
+  <div class="intro">
+    <h3>intro</h3>
+    <%= f.label :introduction %><br/>
+    <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update User" %>
+  </div>
+<% end %>
+<h3>Cancel my account</h3>
+<%= link_to "Back", :back %>

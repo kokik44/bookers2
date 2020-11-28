@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inner">
+        <nav>
+          <div class="header-logo"><p>Bookers</P></div>
+        </nav>
+        <nav class="header-links">
+            <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+            <li>
+              <span class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to 'Home', user_path(current_user.id) %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-user" aria-hidden="true"> <%= link_to 'Users', '/users' %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-book" aria-hidden="true"> <%= link_to 'Books', '/books' %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-log-out" aria-hidden="true"><%= link_to 'logout', destroy_user_session_path, method: :delete %></span>
+            </li>
+              <% else %>
+            <li>
+              <span class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to 'Home', '/' %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-link" aria-hidden="true"> <%= link_to 'About', 'home/about' %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"> <%= link_to 'sign up', '/users/sign_up' %></span>
+            </li>
+            <li>
+              <span class="glyphicon glyphicon-log-in" aria-hidden="true"><%= link_to 'login', '/users/sign_in' %></span>
+            </li>
+            <% end  %>
+            </ul>
+        </nav>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>

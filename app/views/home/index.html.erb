@@ -1,0 +1,24 @@
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
+    <div class="home-inner">
+
+      <div class="home-main">
+        <h1>Welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="bookers-bold">Bookers !!</span></h1>
+        <p>In <span class="bookers-bold">Bookers</span>,
+
+    you can share and exchange your opinions , impressions , and emotions
+
+    about various books!</p>
+      </div>
+           <div class="home-footer">
+            <%= link_to 'Log in', '/users/sign_in', {class: "home-sign-in"} %>
+            <%= link_to 'Sign up', '/users/sign_up', {class: "home-sign-up"} %>
+          </div>
+      <div class="copyright">CopyRight Infratop.inc</div>    
+    </div>
+    
+
+
